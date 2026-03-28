@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ProCulio Investor Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="deck-header">
+        <div class="brand-row">
+          <h1 class="logo">Pro<span>Culio</span></h1>
+          <p>Investor Experience</p>
+        </div>
+
+        <div class="header-controls">
+          <div class="counter-wrap">
+            <span id="slide-current">01</span>
+            <div class="meter"><span id="meter-fill"></span></div>
+            <span id="slide-total">13</span>
+          </div>
+          <button type="button" class="pdf-btn">⤓ PDF</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="slide-frame">
+          <div class="frame-dot" aria-hidden="true"></div>
+
+          <p class="deck-label">INVESTOR PITCH DECK</p>
+
+          <article id="slide-content" class="slide-content"></article>
+
+          <footer class="meta-row">
+            <p><strong>Stage:</strong> <span id="stage"></span></p>
+            <p><strong>HQ:</strong> <span id="hq"></span></p>
+            <p><strong>Raise:</strong> <span id="raise"></span></p>
+            <p><strong>Runway:</strong> <span id="runway"></span></p>
+          </footer>
+        </section>
+
+        <aside class="dot-nav" id="dot-nav" aria-label="Slide navigation"></aside>
+
+        <nav class="bottom-nav" aria-label="Bottom slide controls">
+          <button type="button" id="prev-btn" class="nav-btn">‹</button>
+          <ol id="number-nav" class="number-nav"></ol>
+          <button type="button" id="next-btn" class="nav-btn">›</button>
+        </nav>
+      </main>
+    </div>
+
+    <template id="cover-slide-template">
+      <div class="cover-slide">
+        <h2>Pro<span>Culio</span></h2>
+        <p class="subtitle"></p>
+      </div>
+    </template>
+
+    <template id="content-slide-template">
+      <div class="content-slide">
+        <h3></h3>
+        <p class="body"></p>
+        <ul class="bullet-list"></ul>
+      </div>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
