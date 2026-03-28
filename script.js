@@ -4,7 +4,7 @@ const slides = [
     subtitle: 'Verified cross-border sourcing platform and procurement marketplace for CEE SMEs',
     cover: true,
     stage: 'Pre-seed / MVP',
-    hq: 'Zagreb, Croatia',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -17,7 +17,7 @@ const slides = [
       'Procurement teams lack a single workflow from discovery to order fulfillment.'
     ],
     stage: 'Market Validation',
-    hq: 'Regional Focus: CEE',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -30,7 +30,7 @@ const slides = [
       'Escrow-backed ordering flow for safer international transactions.'
     ],
     stage: 'Product Built',
-    hq: 'Zagreb + Remote',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -43,7 +43,7 @@ const slides = [
       'Initial wedge: manufacturing, packaging, and consumer goods importers.'
     ],
     stage: 'Expansion Ready',
-    hq: 'CEE Launch',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -56,7 +56,7 @@ const slides = [
       'Simple collaboration for founders, finance teams, and operators.'
     ],
     stage: 'Beta Users',
-    hq: 'Zagreb Product Hub',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -69,7 +69,7 @@ const slides = [
       'High-margin add-ons: supplier audits, logistics checks, and compliance packs.'
     ],
     stage: 'Revenue Pilot',
-    hq: 'CEE',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -82,7 +82,7 @@ const slides = [
       'Average onboarding cycle cut from 3 weeks to 5 days.'
     ],
     stage: 'Pilot Growth',
-    hq: 'Croatia + Slovenia',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -95,7 +95,7 @@ const slides = [
       'Referral incentives tied to transaction milestones.'
     ],
     stage: 'Channel Buildout',
-    hq: 'CEE Region',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -108,7 +108,7 @@ const slides = [
       'Local execution model with scalable digital rails.'
     ],
     stage: 'Positioning Strong',
-    hq: 'Zagreb',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -121,7 +121,7 @@ const slides = [
       'Primary growth levers: transaction volume and upsell penetration.'
     ],
     stage: 'Forecast Ready',
-    hq: 'CEE HQ',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -134,7 +134,7 @@ const slides = [
       'Advisors: logistics, legal compliance, and B2B growth.'
     ],
     stage: 'Hiring Core Roles',
-    hq: 'Zagreb',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -147,7 +147,7 @@ const slides = [
       '20% operations, compliance, and working capital buffer.'
     ],
     stage: 'Raising Now',
-    hq: 'Croatia',
+    hq: 'Zagreb,Croatia',
     raise: '€350,000',
     runway: '18 months'
   },
@@ -156,10 +156,26 @@ const slides = [
     body: 'We are building the trust layer for SME cross-border procurement in CEE. Let\'s transform sourcing together.',
     bullets: ['Contact: founders@proculio.com', 'Website: proculio.com', 'Next step: product demo + data room access'],
     stage: 'Next: Due Diligence',
-    hq: 'Zagreb, Croatia',
+    hq: 'Zagreb,Croatia',
     raise: 'Open Round',
     runway: '18+ months'
   }
+];
+
+const deckSections = [
+  'Brand platform',
+  'Problem mapping',
+  'Solution design',
+  'Market scope',
+  'Product journey',
+  'Monetization',
+  'Traction proof',
+  'Go-to-market',
+  'Competitive edge',
+  'Financial story',
+  'Team strength',
+  'Capital use',
+  'Closing'
 ];
 
 const slideContent = document.getElementById('slide-content');
@@ -182,11 +198,13 @@ totalValue.textContent = String(slides.length).padStart(2, '0');
 function buildTemplate(slide) {
   if (slide.cover) {
     const tpl = document.getElementById('cover-slide-template').content.cloneNode(true);
+    tpl.querySelector('.eyebrow').textContent = deckSections[0];
     tpl.querySelector('.subtitle').textContent = slide.subtitle;
     return tpl;
   }
 
   const tpl = document.getElementById('content-slide-template').content.cloneNode(true);
+  tpl.querySelector('.eyebrow').textContent = deckSections[currentIndex];
   tpl.querySelector('h3').textContent = slide.title;
   tpl.querySelector('.body').textContent = slide.body;
 
@@ -202,6 +220,7 @@ function buildTemplate(slide) {
 
 function renderSlide(index) {
   const slide = slides[index];
+  currentIndex = index;
   slideContent.replaceChildren(buildTemplate(slide));
 
   stageValue.textContent = slide.stage;
@@ -223,8 +242,7 @@ function renderSlide(index) {
 }
 
 function jumpTo(index) {
-  currentIndex = (index + slides.length) % slides.length;
-  renderSlide(currentIndex);
+  renderSlide((index + slides.length) % slides.length);
 }
 
 function initializeNav() {
